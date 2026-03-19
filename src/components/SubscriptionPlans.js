@@ -3,10 +3,39 @@
 import { useEffect, useState } from "react";
 import { SUBSCRIPTION_PLANS } from "@/constants/landingPageConstants";
 
+async function submitSubscriptionRequest(payload) {
+  const response = await fetch("/api/subscription-requests", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  let result = null;
+
+  try {
+    result = await response.json();
+  } catch {
+    result = null;
+  }
+
+  if (!response.ok) {
+    throw new Error(result?.message || "Failed to submit request.");
+  }
+
+  return result;
+}
+
 export default function SubscriptionPlans() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [subscriberName, setSubscriberName] = useState("");
+  const [subscriberEmail, setSubscriberEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState("");
 
   useEffect(() => {
     if (!isDialogOpen) {
@@ -28,6 +57,17 @@ export default function SubscriptionPlans() {
     };
   }, [isDialogOpen]);
 
+  useEffect(() => {
+    if (!isDialogOpen) {
+      setSubscriberName("");
+      setSubscriberEmail("");
+      setPhoneNumber("");
+      setSubmitError("");
+      setSubmitSuccess("");
+      setIsSubmitting(false);
+    }
+  }, [isDialogOpen]);
+
   const handleOpenDialog = (planTitle) => {
     setSelectedPlan(planTitle);
     setIsDialogOpen(true);
@@ -35,7 +75,6 @@ export default function SubscriptionPlans() {
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
-    setPhoneNumber("");
   };
 
   const handlePhoneChange = (event) => {
@@ -45,6 +84,38 @@ export default function SubscriptionPlans() {
     const digitsOnly = sanitizedValue.replace(/\+/g, "");
 
     setPhoneNumber(hasLeadingPlus ? `+${digitsOnly}` : digitsOnly);
+  };
+
+  const handleSubmitRequest = async (event) => {
+    event.preventDefault();
+
+    if (!selectedPlan) {
+      setSubmitError("Please select a subscription plan first.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess("");
+
+    try {
+      await submitSubscriptionRequest({
+        name: subscriberName,
+        email: subscriberEmail,
+        phone: phoneNumber,
+        plan: selectedPlan,
+      });
+
+      setSubmitSuccess("Request submitted successfully. We will contact you shortly.");
+
+      setTimeout(() => {
+        setIsDialogOpen(false);
+      }, 1000);
+    } catch (error) {
+      setSubmitError(error.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -154,7 +225,7 @@ export default function SubscriptionPlans() {
               </button>
             </div>
 
-            <form className="mt-6 space-y-4" onSubmit={handleCloseDialog}>
+            <form className="mt-6 space-y-4" onSubmit={handleSubmitRequest}>
               <div>
                 <label
                   htmlFor="subscriber-name"
@@ -166,6 +237,8 @@ export default function SubscriptionPlans() {
                   id="subscriber-name"
                   type="text"
                   required
+                  value={subscriberName}
+                  onChange={(event) => setSubscriberName(event.target.value)}
                   placeholder="Enter your full name"
                   className="w-full rounded-lg border border-[#CBD5E1] bg-white px-3.5 py-2.5 text-sm text-[#0F172A] outline-none transition focus:border-[#38BDF8] focus:ring-2 focus:ring-[#BAE6FD]"
                 />
@@ -181,6 +254,8 @@ export default function SubscriptionPlans() {
                   id="subscriber-email"
                   type="email"
                   required
+                  value={subscriberEmail}
+                  onChange={(event) => setSubscriberEmail(event.target.value)}
                   placeholder="name@company.com"
                   className="w-full rounded-lg border border-[#CBD5E1] bg-white px-3.5 py-2.5 text-sm text-[#0F172A] outline-none transition focus:border-[#38BDF8] focus:ring-2 focus:ring-[#BAE6FD]"
                 />
@@ -205,19 +280,33 @@ export default function SubscriptionPlans() {
                 />
               </div>
 
+              {submitError ? (
+                <p className="rounded-lg border border-[#FCA5A5] bg-[#FEF2F2] px-3 py-2 text-sm text-[#B91C1C]">
+                  {submitError}
+                </p>
+              ) : null}
+
+              {submitSuccess ? (
+                <p className="rounded-lg border border-[#86EFAC] bg-[#F0FDF4] px-3 py-2 text-sm text-[#166534]">
+                  {submitSuccess}
+                </p>
+              ) : null}
+
               <div className="mt-1 flex gap-3">
                 <button
                   type="button"
                   onClick={handleCloseDialog}
+                  disabled={isSubmitting}
                   className="w-1/2 rounded-lg border border-[#CBD5E1] bg-white px-4 py-2.5 text-sm font-semibold text-[#334155] transition hover:bg-[#F8FAFC] hover:cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-1/2 rounded-lg bg-linear-to-r from-[#0EA5E9] to-[#6366F1] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(14,165,233,0.28)] transition hover:brightness-105 hover:cursor-pointer"
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </form>
