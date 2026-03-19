@@ -6,7 +6,7 @@ export default function Roles() {
 		<section id="user-roles" className="bg-white py-20 sm:py-24">
 			<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div className="mx-auto max-w-3xl text-center">
-					<h2 className="bg-linear-to-b from-[#818181] via-[#282828] to-[#282828] bg-clip-text font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-transparent">Seven Specialized User Role</h2>
+					<h2 className="bg-linear-to-b from-[#818181] via-[#282828] to-[#282828] bg-clip-text font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-transparent">Three Specialized User Role</h2>
 					<p className="mt-3 mx-auto text-lg md:text-2xl max-w-3xl text-[#64748B]">
 						Tailored access and features for every stakeholder in the real estate ecosystem.
 					</p>

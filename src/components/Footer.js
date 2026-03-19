@@ -1,10 +1,22 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
 	FOOTER_COLUMNS,
 	FOOTER_CONTACT_ITEMS,
 	FOOTER_LANGUAGES,
 	FOOTER_SOCIAL_ICONS,
 } from "@/constants/landingPageConstants";
+
+const FOOTER_LINK_HREFS = {
+	Features: "/#features",
+	"User Roles": "/#user-roles",
+	Pricing: "/#pricing",
+	"How It Works": "/#how-it-works",
+	"Contact Support": "/#cta-section",
+	"About Us": "/about-us",
+	"Privacy Policy": "/privacy-policy",
+	"Terms & Conditions": "/terms-and-conditions",
+};
 
 export default function Footer() {
 	return (
@@ -33,9 +45,9 @@ export default function Footer() {
 							<ul className="mt-4 space-y-2.5">
 								{column.links.map((link) => (
 									<li key={link}>
-										<a href="#" className="text-sm text-slate-400 transition hover:text-white">
+										<Link href={FOOTER_LINK_HREFS[link] ?? "#"} className="text-sm text-slate-400 transition hover:text-white">
 											{link}
-										</a>
+										</Link>
 									</li>
 								))}
 							</ul>

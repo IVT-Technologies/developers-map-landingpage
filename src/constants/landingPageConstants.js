@@ -1,5 +1,16 @@
 export const NAV_ITEMS = ["Home", "Features", "User Roles", "How It Works", "Pricing"];
 
+export const LOGIN_URL = "http://develoeprs-maps.s3-website-us-east-1.amazonaws.com/#/dashboard";
+export const SIGNUP_URL = "http://develoeprs-maps.s3-website-us-east-1.amazonaws.com/#/signup";
+
+export const NAV_LINK_HREFS = {
+  Home: "/#home",
+  Features: "/#features",
+  "User Roles": "/#user-roles",
+  "How It Works": "/#how-it-works",
+  Pricing: "/#pricing",
+};
+
 export const HERO_BACKGROUND_IMAGE = "/heroSection.png";
 
 export const FEATURES = [
@@ -187,6 +198,10 @@ export const FOOTER_COLUMNS = [
     title: "Platform",
     links: ["Features", "User Roles", "Pricing", "How It Works"],
   },
+   {
+    title: "Legal",
+    links: ["Privacy Policy", "Terms & Conditions"],
+  },
   {
     title: "Support",
     links: ["Contact Support"],
@@ -195,10 +210,7 @@ export const FOOTER_COLUMNS = [
     title: "Company",
     links: ["About Us"],
   },
-  {
-    title: "Legal",
-    links: ["Privacy Policy", "Terms of Service", "Cookie Policy", "GDPR Compliance"],
-  },
+ 
 ];
 
 export const FOOTER_LANGUAGES = ["English", "Russian", "中文", "العربية"];
@@ -230,3 +242,41 @@ export const HOME_METADATA = {
     canonical: "/",
   },
 };
+
+export const ABOUT_US_METADATA = {
+  title: "About Us",
+  description:
+    "Learn about Developers Map and our mission to simplify multilingual real estate brochure generation and project management.",
+  alternates: {
+    canonical: "/about-us",
+  },
+};
+
+export const ABOUT_US_CONTENT = {
+  heading: "About Developers Map",
+  paragraphs: [
+    "Developers Map is a modern real estate platform focused on multilingual brochure generation and practical property operations. We help teams present projects beautifully, manage data confidently, and collaborate smoothly across roles.",
+    "From project discovery to final brochure delivery, our goal is simple: make every workflow faster, clearer, and easier for growing real estate businesses.",
+  ],
+  image: {
+    src: "/house3.jpg",
+    alt: "Modern property building",
+    width: 900,
+    height: 700,
+  },
+};
+
+export const ABOUT_US_HIGHLIGHTS = [
+  {
+    title: "Our Mission",
+    text: "To empower developers, agencies, and agents with one multilingual platform that simplifies marketing, operations, and sales collaboration.",
+  },
+  {
+    title: "What We Build",
+    text: "We build tools for interactive listing discovery, brochure automation, role-based workflows, and reliable communication across teams.",
+  },
+  {
+    title: "Why Developers Map",
+    text: "Our product combines performance, clarity, and scalability so real estate teams can move faster without losing control.",
+  },
+];

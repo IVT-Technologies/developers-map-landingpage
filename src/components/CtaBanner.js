@@ -3,6 +3,7 @@ const CTA_BACKGROUND_IMAGE = "/startjourney.png";
 export default function CtaBanner() {
   return (
     <section
+      id="cta-section"
       className="relative isolate overflow-hidden py-20 sm:py-24"
       style={{
         backgroundImage: `url(${CTA_BACKGROUND_IMAGE})`,
@@ -46,7 +47,7 @@ export default function CtaBanner() {
             <span>info@developersmap.net</span>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center pr-7">
             <img src="/phone.svg" alt="Phone" className="mr-2" />
             <span>Contact Sales</span>
           </div>

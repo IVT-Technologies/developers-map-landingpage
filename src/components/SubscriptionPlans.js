@@ -53,10 +53,6 @@ export default function SubscriptionPlans() {
 						);
 					})}
 				</div>
-
-				<p className="mt-8 text-center text-xs text-slate-500 sm:text-sm">
-					All subscriptions include 7-day expiry notifications and automatic renewal reminders.
-				</p>
 			</div>
 		</section>
 	);

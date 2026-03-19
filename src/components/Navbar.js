@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { NAV_ITEMS } from "@/constants/landingPageConstants";
+import { LOGIN_URL, NAV_ITEMS, NAV_LINK_HREFS, SIGNUP_URL } from "@/constants/landingPageConstants";
 
 export default function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,34 +21,33 @@ export default function Navbar() {
 			<div className="mx-auto flex w-full max-w-full items-center justify-between px-4 py-2.5 sm:px-6 lg:px-20">
 				<Link href="/" className="flex items-center gap-2.5 font-heading text-[14px] font-extrabold tracking-tight text-slate-800">
 					<Image src="/logo.png" alt="Developers Map logo" width={172} height={42} className="h-8 w-auto rounded-full" priority />
-					<span className="text-lg font-bold">Developers Map</span>
 				</Link>
 
 				<nav className="hidden items-center gap-10 lg:flex">
 					{NAV_ITEMS.map((item) => (
-						<a
+						<Link
 							key={item}
-							href={`#${item.toLowerCase().replaceAll(" ", "-")}`}
+							href={NAV_LINK_HREFS[item] ?? "/"}
 							className="text-base font-medium text-[rgba(54, 65, 83, 1)] transition hover:text-slate-600"
 						>
 							{item}
-						</a>
+						</Link>
 					))}
 				</nav>
 
 				<div className="hidden items-center gap-3 lg:flex">
-					<button
-						type="button"
+					<Link
+						href={LOGIN_URL}
 						className="hidden text-[13px] font-bold rounded-lg text-slate-800 hover:bg-linear-to-b from-[#818181] hover:duration-200 via-[#282828] to-[#282828] hover:text-white  hover:cursor-pointer transition px-4 py-2 sm:block"
 					>
 						Sign In
-					</button>
-					<button
-						type="button"
+					</Link>
+					<Link
+						href={SIGNUP_URL}
 						className="rounded-lg bg-linear-to-b from-[#818181] via-[#282828] to-[#282828] px-4 py-2 text-[13px] hover:cursor-pointer font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:from-slate-600 hover:to-slate-800"
 					>
 						Get Started
-					</button>
+					</Link>
 				</div>
 
 				<button
@@ -76,29 +75,31 @@ export default function Navbar() {
 				>
 					<nav className="flex flex-col gap-2">
 						{NAV_ITEMS.map((item) => (
-							<a
+							<Link
 								key={item}
-								href={`#${item.toLowerCase().replaceAll(" ", "-")}`}
+								href={NAV_LINK_HREFS[item] ?? "/"}
 								onClick={handleMenuClose}
 								className="rounded-md px-2 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
 							>
 								{item}
-							</a>
+							</Link>
 						))}
 					</nav>
 					<div className="mt-4 grid grid-cols-1 gap-2">
-						<button
-							type="button"
-							className="w-full rounded-lg border border-slate-300 px-4 py-2 text-[13px] font-bold text-slate-800 transition hover:bg-slate-100"
+						<Link
+							href={LOGIN_URL}
+							onClick={handleMenuClose}
+							className="w-full rounded-lg border border-slate-300 px-4 py-2 text-[13px] font-bold text-slate-800 text-center transition hover:bg-slate-100"
 						>
 							Sign In
-						</button>
-						<button
-							type="button"
+						</Link>
+						<Link
+							href={SIGNUP_URL}
+							onClick={handleMenuClose}
 							className="w-full rounded-lg bg-linear-to-b from-[#818181] via-[#282828] to-[#282828] px-4 py-2 text-[13px] font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:from-slate-600 hover:to-slate-800"
 						>
 							Get Started
-						</button>
+						</Link>
 					</div>
 				</div>
 			)}
