@@ -1,7 +1,7 @@
 export const NAV_ITEMS = ["Home", "Features", "User Roles", "How It Works", "Pricing"];
 
-export const LOGIN_URL = "http://develoeprs-maps.s3-website-us-east-1.amazonaws.com/#/dashboard";
-export const SIGNUP_URL = "http://develoeprs-maps.s3-website-us-east-1.amazonaws.com/#/signup";
+export const LOGIN_URL = "https://app.developersmap.ai/login";
+export const SIGNUP_URL = "https://app.developersmap.ai/signup";
 
 export const NAV_LINK_HREFS = {
   Home: "/#home",

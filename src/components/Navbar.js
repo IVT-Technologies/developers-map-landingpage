@@ -20,7 +20,8 @@ export default function Navbar() {
 		<header className="relative z-30 border-b border-slate-200 bg-white">
 			<div className="mx-auto flex w-full max-w-full items-center justify-between px-4 py-2.5 sm:px-6 lg:px-20">
 				<Link href="/" className="flex items-center gap-2.5 font-heading text-[14px] font-extrabold tracking-tight text-slate-800">
-					<Image src="/logo.png" alt="Developers Map logo" width={172} height={42} className="h-8 w-auto rounded-full" priority />
+					<Image src="/logo.svg" alt="Developers Map logo" width={172} height={42} className="h-8 w-auto rounded-full" priority />
+                    <span className="text-lg font-bold">Developers Map</span>
 				</Link>
 
 				<nav className="hidden items-center gap-10 lg:flex">
@@ -71,7 +72,7 @@ export default function Navbar() {
 			{isMenuOpen && (
 				<div
 					id="mobile-nav-menu"
-					className="absolute left-0 right-0 top-full z-[70] border-t border-slate-200 bg-white px-4 py-4 shadow-lg lg:hidden"
+					className="absolute left-0 right-0 top-full z-70 border-t border-slate-200 bg-white px-4 py-4 shadow-lg lg:hidden"
 				>
 					<nav className="flex flex-col gap-2">
 						{NAV_ITEMS.map((item) => (
@@ -96,7 +97,7 @@ export default function Navbar() {
 						<Link
 							href={SIGNUP_URL}
 							onClick={handleMenuClose}
-							className="w-full rounded-lg bg-linear-to-b from-[#818181] via-[#282828] to-[#282828] px-4 py-2 text-[13px] font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:from-slate-600 hover:to-slate-800"
+							className="w-full rounded-lg bg-linear-to-b from-[#818181] via-[#282828] to-[#282828] px-4 py-2 text-[13px] text-center font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:from-slate-600 hover:to-slate-800"
 						>
 							Get Started
 						</Link>

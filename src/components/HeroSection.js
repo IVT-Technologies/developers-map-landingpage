@@ -1,3 +1,6 @@
+import { SIGNUP_URL } from "@/constants/landingPageConstants";
+import Link from "next/link";
+
 const HERO_BACKGROUND_IMAGE = "/heroSection.png";
 
 export default function HeroSection({ children }) {
@@ -35,12 +38,12 @@ export default function HeroSection({ children }) {
 							<span><img src="/language.svg" alt="Multilingual support icon" width={16} height={16} className="h-4 w-4" /></span>
                             Available in English, Russian, Chinese &amp; Arabic
 						</p>
-						<button
-							type="button"
-							className="mt-6 flex gap-2 rounded-md bg-linear-to-b from-[#13F58C] via-[#097347] to-[#282828] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-900/25 transition hover:bg-emerald-400 sm:px-6 sm:py-3"
+						<Link
+							href={SIGNUP_URL}
+							className="mt-6 w-40 flex gap-2 rounded-md bg-linear-to-b from-[#13F58C] via-[#097347] to-[#282828] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-900/25 transition hover:bg-emerald-400 sm:px-6 sm:py-3"
 						>
 							Get Started <span><img src="/arrow.svg" alt="Arrow icon" width={16} height={16} className="h-4 w-4 pt-1" /></span>
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

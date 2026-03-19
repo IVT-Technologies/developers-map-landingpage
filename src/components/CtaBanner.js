@@ -1,3 +1,6 @@
+import { SIGNUP_URL } from "@/constants/landingPageConstants";
+import Link from "next/link";
+
 const CTA_BACKGROUND_IMAGE = "/startjourney.png";
 
 export default function CtaBanner() {
@@ -21,8 +24,8 @@ export default function CtaBanner() {
           brochures and manage properties efficiently
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <button
-            type="button"
+          <Link
+            href={SIGNUP_URL}
             className="rounded-md bg-white flex gap-2 px-5 py-2.5 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-50 hover:cursor-pointer"
           >
             Start Your Journey{" "}
@@ -33,13 +36,7 @@ export default function CtaBanner() {
                 className=" w-4 h-4 pt-1"
               />
             </span>
-          </button>
-          <button
-            type="button"
-            className="rounded-md border border-white/50 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20 hover:cursor-pointer"
-          >
-            Schedule a Demo
-          </button>
+          </Link>
         </div>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-5 divide-x divide-gray-400 text-xs text-blue-100">
           <div className="flex items-center pr-5">
@@ -49,7 +46,7 @@ export default function CtaBanner() {
 
           <div className="flex items-center pr-7">
             <img src="/phone.svg" alt="Phone" className="mr-2" />
-            <span>Contact Sales</span>
+            <span>+1 (555) 123-4567</span>
           </div>
         </div>
       </div>

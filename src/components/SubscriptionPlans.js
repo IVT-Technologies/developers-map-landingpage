@@ -275,7 +275,7 @@ export default function SubscriptionPlans() {
                   onChange={handlePhoneChange}
                   inputMode="tel"
                   pattern="^\+?\d+$"
-                  placeholder="+92 300 1234567"
+                  placeholder="+1 (555) 123-4567"
                   className="w-full rounded-lg border border-[#CBD5E1] bg-white px-3.5 py-2.5 text-sm text-[#0F172A] outline-none transition focus:border-[#38BDF8] focus:ring-2 focus:ring-[#BAE6FD]"
                 />
               </div>
