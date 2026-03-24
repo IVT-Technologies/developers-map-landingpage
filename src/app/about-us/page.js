@@ -9,7 +9,7 @@ export const metadata = ABOUT_US_METADATA;
 
 export default function AboutUsPage() {
   return (
-    <div className="bg-slate-50">
+    <div className="bg-slate-50 pt-10">
       <Navbar />
       <main className="bg-linear-to-b from-[#F6F7F9] to-white py-14 sm:py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">

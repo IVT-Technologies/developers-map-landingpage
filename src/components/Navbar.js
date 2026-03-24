@@ -17,7 +17,7 @@ export default function Navbar() {
 	};
 
 	return (
-		<header className="relative z-30 border-b border-slate-200 bg-white">
+		<header className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white">
 			<div className="mx-auto flex w-full max-w-full items-center justify-between px-4 py-2.5 sm:px-6 lg:px-20">
 				<Link href="/" className="flex items-center gap-2.5 font-heading text-[14px] font-extrabold tracking-tight text-slate-800">
 					<Image src="/logo.svg" alt="Developers Map logo" width={172} height={42} className="h-8 w-auto rounded-full" priority />

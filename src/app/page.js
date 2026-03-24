@@ -27,9 +27,8 @@ export const metadata = {
 export default function Home() {
   return (
    <div className="bg-slate-50 ">
-    <HeroSection>
-      <Navbar />
-    </HeroSection>
+    <Navbar />
+    <HeroSection />
     <Features />
     <Roles />
     <HowItWorks />
