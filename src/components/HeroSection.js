@@ -1,7 +1,7 @@
 import { SIGNUP_URL } from "@/constants/landingPageConstants";
 import Link from "next/link";
 
-const HERO_BACKGROUND_IMAGE = "/heroSection.png";
+const HERO_BACKGROUND_IMAGE = "/heroSection.webp";
 
 export default function HeroSection({ children }) {
 	return (
@@ -9,9 +9,10 @@ export default function HeroSection({ children }) {
 			id="home"
 			className="relative isolate min-h-screen overflow-hidden"
 			style={{
-				backgroundImage: ` url(${HERO_BACKGROUND_IMAGE})`,
+				backgroundImage: `url(${HERO_BACKGROUND_IMAGE})`,
 				backgroundSize: "cover",
 				backgroundPosition: "center",
+				backgroundColor: "#141618",
 			}}
 		>
 			<div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_45%,rgba(15,23,42,0.2),transparent_55%)]" />
