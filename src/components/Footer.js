@@ -23,7 +23,9 @@ export default function Footer() {
 		<footer className="bg-[#0F172A] text-slate-200">
 			<div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.3fr_2fr] lg:px-8">
 				<div>
-					<h3 className="font-heading text-2xl font-bold text-white">Developers Map</h3>
+					<Link href="/#home" className="font-heading text-2xl font-bold text-white hover:cursor-pointer">
+						Developers Map
+					</Link>
 					<p className="mt-4 max-w-md text-sm leading-7 text-slate-400">
 						The comprehensive real estate brochure generation platform supporting multilingual workflows and role-based
 						management.
