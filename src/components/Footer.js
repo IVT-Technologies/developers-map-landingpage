@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -6,6 +8,7 @@ import {
 	FOOTER_LANGUAGES,
 	FOOTER_SOCIAL_ICONS,
 } from "@/constants/landingPageConstants";
+import useSectionNavigation from "@/hooks/useSectionNavigation";
 
 const FOOTER_LINK_HREFS = {
 	Features: "/#features",
@@ -19,11 +22,17 @@ const FOOTER_LINK_HREFS = {
 };
 
 export default function Footer() {
+	const { handleSectionNavigation } = useSectionNavigation(8);
+
 	return (
 		<footer className="bg-[#0F172A] text-slate-200">
 			<div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.3fr_2fr] lg:px-8">
 				<div>
-					<Link href="/#home" className="font-heading text-2xl font-bold text-white hover:cursor-pointer">
+					<Link
+						href="/#home"
+						onClick={(event) => handleSectionNavigation(event, "/#home")}
+						className="font-heading text-2xl font-bold text-white hover:cursor-pointer"
+					>
 						Developers Map
 					</Link>
 					<p className="mt-4 max-w-md text-sm leading-7 text-slate-400">
@@ -47,7 +56,11 @@ export default function Footer() {
 							<ul className="mt-4 space-y-2.5">
 								{column.links.map((link) => (
 									<li key={link}>
-										<Link href={FOOTER_LINK_HREFS[link] ?? "#"} className="text-sm text-slate-400 transition hover:text-white">
+										<Link
+											href={FOOTER_LINK_HREFS[link] ?? "#"}
+											onClick={(event) => handleSectionNavigation(event, FOOTER_LINK_HREFS[link] ?? "#")}
+											className="text-sm text-slate-400 transition hover:text-white"
+										>
 											{link}
 										</Link>
 									</li>

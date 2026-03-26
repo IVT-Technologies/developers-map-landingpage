@@ -4,9 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { LOGIN_URL, NAV_ITEMS, NAV_LINK_HREFS, SIGNUP_URL } from "@/constants/landingPageConstants";
+import useSectionNavigation from "@/hooks/useSectionNavigation";
 
 export default function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const { handleSectionNavigation } = useSectionNavigation(8);
 
 	const handleMenuToggle = () => {
 		setIsMenuOpen((previous) => !previous);
@@ -29,6 +31,7 @@ export default function Navbar() {
 						<Link
 							key={item}
 							href={NAV_LINK_HREFS[item] ?? "/"}
+							onClick={(event) => handleSectionNavigation(event, NAV_LINK_HREFS[item] ?? "/")}
 							className="text-base font-medium text-[rgba(54, 65, 83, 1)] transition hover:text-slate-600"
 						>
 							{item}
@@ -79,7 +82,11 @@ export default function Navbar() {
 							<Link
 								key={item}
 								href={NAV_LINK_HREFS[item] ?? "/"}
-								onClick={handleMenuClose}
+								onClick={(event) =>
+									handleSectionNavigation(event, NAV_LINK_HREFS[item] ?? "/", {
+										onBeforeNavigate: handleMenuClose,
+									})
+								}
 								className="rounded-md px-2 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
 							>
 								{item}
